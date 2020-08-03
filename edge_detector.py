@@ -2,7 +2,6 @@ from tkinter import *
 from tkinter import filedialog
 import cv2
 import numpy as np
-from random import randrange
 
 root = Tk()
 root.title("EDGE Detector")
@@ -45,8 +44,9 @@ def imagebutton():
     cv2.destroyAllWindows()
 
 def videobutton():
-    #videofile = filedialog.askopenfilenames(initialdir='/',title='Select A File',filetypes=[("all video format", ".mp4"),("all video format", ".flv"),("all video format", ".avi")])
-    video = cv2.VideoCapture('car.mp4',0)
+    videofile = filedialog.askopenfilenames(initialdir='/',title='Select A File',filetypes=[("all video format", ".mp4"),("all video format", ".flv"),("all video format", ".avi")])
+    video = cv2.VideoCapture(videofile)
+    video = cv2.VideoCapture('car.mp4',0) #use this if you get error in above line where we browsing filename in videofile variable
     while True:
         successful_frame_read,frame = video.read()
         cv2.imshow('Original', frame)
